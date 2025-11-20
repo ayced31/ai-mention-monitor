@@ -25,7 +25,7 @@ A production-ready B2B SaaS platform that monitors brand mentions across ChatGPT
 
 ---
 
-## 💼 Perfect For Recruiters
+## 💼 Project Details
 
 **Project Type:** Full-stack B2B SaaS platform (Production-ready MVP)  
 **Development Time:** Solo project, ~80 hours  

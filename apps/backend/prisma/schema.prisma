@@ -1,0 +1,132 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Plan {
+  FREE
+  STARTER
+  PRO
+  ENTERPRISE
+}
+
+enum AlertChannel {
+  EMAIL
+  SLACK
+  WEBHOOK
+}
+
+enum AlertType {
+  MENTION_DETECTED
+  MENTION_LOST
+  COMPETITOR_MENTIONED
+  WEEKLY_DIGEST
+}
+
+enum AIProvider {
+  OPENAI
+  ANTHROPIC
+  PERPLEXITY
+  GEMINI
+}
+
+enum CheckFrequency {
+  HOURLY
+  DAILY
+  WEEKLY
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  plan      Plan     @default(FREE)
+  
+  brands    Brand[]
+  alerts    Alert[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([email])
+}
+
+model Brand {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  name        String
+  domain      String?
+  keywords    String[]
+  competitors String[]
+  
+  queries     Query[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([userId])
+}
+
+model Query {
+  id          String         @id @default(cuid())
+  brandId     String
+  brand       Brand          @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  
+  queryText   String
+  isActive    Boolean        @default(true)
+  frequency   CheckFrequency @default(DAILY)
+  lastChecked DateTime?
+  
+  mentions    Mention[]
+  
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  
+  @@index([brandId])
+  @@index([isActive, lastChecked])
+}
+
+model Mention {
+  id           String     @id @default(cuid())
+  queryId      String
+  query        Query      @relation(fields: [queryId], references: [id], onDelete: Cascade)
+  
+  aiProvider   AIProvider
+  mentioned    Boolean
+  context      String?
+  position     Int?
+  competitors  Json?
+  confidence   Float
+  rawResponse  String     @db.Text
+  
+  checkedAt    DateTime   @default(now())
+  
+  @@index([queryId, checkedAt])
+  @@index([aiProvider])
+}
+
+model Alert {
+  id        String       @id @default(cuid())
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  type      AlertType
+  channel   AlertChannel
+  config    Json
+  threshold Int?
+  isActive  Boolean      @default(true)
+  
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  
+  @@index([userId, isActive])
+}

@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/landing.css';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/landing.css";
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
@@ -9,44 +9,19 @@ export default function LandingPage() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div className="landing-page">
-      {/* Announcement Banner */}
-      <div className="announcement-banner">
-        <div className="container">
-          <p>
-            🎉 Now tracking mentions across 4 major AI platforms
-            <a href="#features" className="ml-2 underline hover:text-white">
-              Learn more →
-            </a>
-          </p>
-        </div>
-      </div>
-
       {/* Header */}
-      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <header className={`header ${scrolled ? "scrolled" : ""}`}>
         <div className="container">
           <div className="header-content">
             {/* Logo */}
             <div className="logo">
-              <div className="logo-icon">
-                <svg viewBox="0 0 32 32" fill="none">
-                  <rect x="4" y="4" width="24" height="24" rx="6" fill="url(#logo-gradient)" />
-                  <path d="M12 10h8v2h-8zM12 16h8v2h-8zM12 22h5v2h-5z" fill="white" />
-                  <defs>
-                    <linearGradient id="logo-gradient" x1="4" y1="4" x2="28" y2="28">
-                      <stop offset="0%" stopColor="#A65CFF" />
-                      <stop offset="50%" stopColor="#FF6FAF" />
-                      <stop offset="100%" stopColor="#4F8BFF" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <span className="logo-text">AI Mention Tracker</span>
+              <span className="logo-text">AI Mention Monitor</span>
             </div>
 
             {/* Navigation */}
@@ -77,13 +52,13 @@ export default function LandingPage() {
           <div className="hero-content">
             <div className="hero-text">
               <h1 className="hero-title">
-                Transform AI mentions into{' '}
+                Transform AI mentions into{" "}
                 <span className="gradient-text">brand growth</span>
               </h1>
               <p className="hero-subtitle">
-                Monitor your brand mentions across ChatGPT, Claude, Gemini, and Perplexity
-                in real-time. Get instant alerts, track competitors, and analyze sentiment
-                with our unified AI tracking platform.
+                Monitor your brand mentions across ChatGPT, Claude, Gemini, and
+                Perplexity in real-time. Get instant alerts, track competitors,
+                and analyze sentiment with our unified AI tracking platform.
               </p>
 
               <div className="hero-cta">
@@ -94,18 +69,6 @@ export default function LandingPage() {
                   Learn more ↓
                 </a>
               </div>
-
-              {/* Trusted By */}
-              <div className="trusted-by">
-                <p className="trusted-label">Trusted by leading companies</p>
-                <div className="trusted-logos">
-                  <div className="logo-item">Canva</div>
-                  <div className="logo-item">Loom</div>
-                  <div className="logo-item">Linear</div>
-                  <div className="logo-item">Notion</div>
-                  <div className="logo-item">Vercel</div>
-                </div>
-              </div>
             </div>
 
             {/* Hero Visual */}
@@ -115,11 +78,29 @@ export default function LandingPage() {
                 <div className="ai-core">
                   <div className="ai-icon">
                     <svg viewBox="0 0 100 100">
-                      <circle cx="50" cy="50" r="40" fill="url(#ai-gradient)" opacity="0.2" />
-                      <circle cx="50" cy="50" r="30" fill="url(#ai-gradient)" opacity="0.4" />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        fill="url(#ai-gradient)"
+                        opacity="0.2"
+                      />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="30"
+                        fill="url(#ai-gradient)"
+                        opacity="0.4"
+                      />
                       <circle cx="50" cy="50" r="20" fill="url(#ai-gradient)" />
                       <defs>
-                        <linearGradient id="ai-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <linearGradient
+                          id="ai-gradient"
+                          x1="0%"
+                          y1="0%"
+                          x2="100%"
+                          y2="100%"
+                        >
                           <stop offset="0%" stopColor="#A65CFF" />
                           <stop offset="50%" stopColor="#FF6FAF" />
                           <stop offset="100%" stopColor="#4F8BFF" />
@@ -150,12 +131,12 @@ export default function LandingPage() {
                     <span className="chart-value">+24%</span>
                   </div>
                   <div className="chart-bars">
-                    <div className="bar" style={{ height: '40%' }}></div>
-                    <div className="bar" style={{ height: '60%' }}></div>
-                    <div className="bar" style={{ height: '45%' }}></div>
-                    <div className="bar" style={{ height: '80%' }}></div>
-                    <div className="bar" style={{ height: '65%' }}></div>
-                    <div className="bar" style={{ height: '90%' }}></div>
+                    <div className="bar" style={{ height: "40%" }}></div>
+                    <div className="bar" style={{ height: "60%" }}></div>
+                    <div className="bar" style={{ height: "45%" }}></div>
+                    <div className="bar" style={{ height: "80%" }}></div>
+                    <div className="bar" style={{ height: "65%" }}></div>
+                    <div className="bar" style={{ height: "90%" }}></div>
                   </div>
                 </div>
               </div>
@@ -186,7 +167,14 @@ export default function LandingPage() {
                 </div>
                 <div className="donut-chart">
                   <svg viewBox="0 0 200 200">
-                    <circle cx="100" cy="100" r="80" fill="none" stroke="#1a1a2e" strokeWidth="20" />
+                    <circle
+                      cx="100"
+                      cy="100"
+                      r="80"
+                      fill="none"
+                      stroke="#1a1a2e"
+                      strokeWidth="20"
+                    />
                     <circle
                       cx="100"
                       cy="100"
@@ -224,7 +212,10 @@ export default function LandingPage() {
                   <div className="list-icon">✓</div>
                   <div className="list-content">
                     <strong>Unified data intake</strong>
-                    <p>Automatically collect mentions from ChatGPT, Claude, Gemini, and Perplexity</p>
+                    <p>
+                      Automatically collect mentions from ChatGPT, Claude,
+                      Gemini, and Perplexity
+                    </p>
                   </div>
                 </li>
                 <li>
@@ -253,20 +244,26 @@ export default function LandingPage() {
           <div className="feature-content">
             <div className="feature-text">
               <h2 className="feature-title">Discover</h2>
-              <p className="feature-subtitle">Surface the insights that matter</p>
+              <p className="feature-subtitle">
+                Surface the insights that matter
+              </p>
               <ul className="feature-list">
                 <li>
                   <div className="list-icon">✓</div>
                   <div className="list-content">
                     <strong>Trend analysis</strong>
-                    <p>Identify patterns and shifts in brand perception over time</p>
+                    <p>
+                      Identify patterns and shifts in brand perception over time
+                    </p>
                   </div>
                 </li>
                 <li>
                   <div className="list-icon">✓</div>
                   <div className="list-content">
                     <strong>Competitor tracking</strong>
-                    <p>Benchmark your brand against competitors in AI responses</p>
+                    <p>
+                      Benchmark your brand against competitors in AI responses
+                    </p>
                   </div>
                 </li>
                 <li>
@@ -287,14 +284,34 @@ export default function LandingPage() {
                 <div className="trend-chart">
                   <svg viewBox="0 0 400 200" className="line-chart">
                     <defs>
-                      <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <linearGradient
+                        id="line-gradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
                         <stop offset="0%" stopColor="#A65CFF" />
                         <stop offset="50%" stopColor="#FF6FAF" />
                         <stop offset="100%" stopColor="#4F8BFF" />
                       </linearGradient>
-                      <linearGradient id="area-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#A65CFF" stopOpacity="0.3" />
-                        <stop offset="100%" stopColor="#A65CFF" stopOpacity="0" />
+                      <linearGradient
+                        id="area-gradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="0%"
+                        y2="100%"
+                      >
+                        <stop
+                          offset="0%"
+                          stopColor="#A65CFF"
+                          stopOpacity="0.3"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#A65CFF"
+                          stopOpacity="0"
+                        />
                       </linearGradient>
                     </defs>
                     <path
@@ -349,41 +366,71 @@ export default function LandingPage() {
             <div className="footer-section">
               <h4>Product</h4>
               <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#integrations">Integrations</a></li>
-                <li><a href="#changelog">Changelog</a></li>
+                <li>
+                  <a href="#features">Features</a>
+                </li>
+                <li>
+                  <a href="#pricing">Pricing</a>
+                </li>
+                <li>
+                  <a href="#integrations">Integrations</a>
+                </li>
+                <li>
+                  <a href="#changelog">Changelog</a>
+                </li>
               </ul>
             </div>
             <div className="footer-section">
               <h4>Company</h4>
               <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#careers">Careers</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li>
+                  <a href="#about">About</a>
+                </li>
+                <li>
+                  <a href="#blog">Blog</a>
+                </li>
+                <li>
+                  <a href="#careers">Careers</a>
+                </li>
+                <li>
+                  <a href="#contact">Contact</a>
+                </li>
               </ul>
             </div>
             <div className="footer-section">
               <h4>Resources</h4>
               <ul>
-                <li><a href="#docs">Documentation</a></li>
-                <li><a href="#api">API Reference</a></li>
-                <li><a href="#support">Support</a></li>
-                <li><a href="#status">Status</a></li>
+                <li>
+                  <a href="#docs">Documentation</a>
+                </li>
+                <li>
+                  <a href="#api">API Reference</a>
+                </li>
+                <li>
+                  <a href="#support">Support</a>
+                </li>
+                <li>
+                  <a href="#status">Status</a>
+                </li>
               </ul>
             </div>
             <div className="footer-section">
               <h4>Legal</h4>
               <ul>
-                <li><a href="#privacy">Privacy</a></li>
-                <li><a href="#terms">Terms</a></li>
-                <li><a href="#security">Security</a></li>
+                <li>
+                  <a href="#privacy">Privacy</a>
+                </li>
+                <li>
+                  <a href="#terms">Terms</a>
+                </li>
+                <li>
+                  <a href="#security">Security</a>
+                </li>
               </ul>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2024 AI Mention Tracker. All rights reserved.</p>
+            <p>&copy; 2024 AI Mention Monitor. All rights reserved.</p>
             <div className="social-links">
               <a href="#twitter">Twitter</a>
               <a href="#linkedin">LinkedIn</a>
